@@ -8,7 +8,9 @@ var serverConfig = require('../config/server').CONFIG;
 var profiles = require('../mock/users').profiles;
  
 router.all(/\/[a-zA-Z0-9]+/, function(req, res, next) {
-  res.header('Access-Control-Allow-Origin', serverConfig.allowClient);
+  if (_.contains(serverConfig.allowClient, req.headers.origin)) {
+    res.header('Access-Control-Allow-Origin', req.headers.origin);
+  }
   res.header('Access-Control-Allow-Methods', 'PUT, GET, POST, DELETE, OPTIONS');
   res.header("Access-Control-Allow-Headers", "X-Requested-With");
   res.header('Access-Control-Allow-Headers', 'Content-Type');
