@@ -148,7 +148,12 @@ var HomeData = {
     bannerData: VODs,
     columns: HomeColumns
 };
+
+var VODHomeData = {
+    vodBanner: VODs
+}
  
 exports.VODs = VODs;
 exports.HomeData = HomeData;
+exports.VODHomeData = VODHomeData;
 exports.DetailColumns = DetailColumns;

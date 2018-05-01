@@ -69,6 +69,23 @@ router.post('/GetVODDetail', function(req, res){
   res.json(data);
   res.end();
 });
+
+router.post('/GetVodHomeData', function(req, res){
+  var data = getVodHomeData(req.body);
+  data.retCode = '00000';
+  res.json(data);
+  res.end();
+});
+
+router.post('/Logout', function(req, res){
+  var data = {
+    retCode: '00000'
+  }
+  res.clearCookie('username');
+  res.clearCookie('isLogin');
+  res.json(data);
+  res.end();
+});
  
 function getHomeData() {
   return mockData.HomeData;
@@ -82,6 +99,10 @@ function getVODDetail(body) {
   });
   data.recomendColumns = mockData.DetailColumns;
   return data;
+}
+
+function getVodHomeData() {
+  return mockData.VODHomeData;
 }
 
 module.exports = router;
